@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var header = "<thead><th>Name</th><th>Operation</th></thead>";
+    var tbl_data = header;
+    function clicker() {
+        var n = document.getElementById("name_box").value;
+        tbl_data += "<tr><td><input type = 'text' value = '"+n+"' readOnly></td><td><button onclick='edit(this)'>Edit</button></td></tr>";
+        document.getElementById("tbl").innerHTML = tbl_data;
+        var n = document.getElementById("name_box").value="";
+    }
+    function edit(elem){
+        elem.parentElement.parentElement.children[0].children[0].readOnly=false;
+        elem.parentElement.innerHTML = "<button onclick='save(this)'>Save</button>";
+    }
+    function save(elem){
+        elem.parentElement.parentElement.children[0].children[0].readOnly=true;
+        elem.parentElement.innerHTML = "<button onclick='edit(this)'>Edit</button>";
+    }
+</script>
+
+<body>
+    <input type="text" name="" id="name_box" placeholder="Enter your name">
+    <button onclick="clicker()">Submit</button><br><br>
+   <table border="2" id="tbl" >
+
+   </table>
+
+    
+
+</body>
+
+</html>
